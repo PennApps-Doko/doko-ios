@@ -8,12 +8,30 @@
 
 import Foundation
 import UIKit
+import StitchCore
 
 class ListController: UIViewController {
+    
+    private lazy var stitchClient = Stitch.defaultAppClient!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let client = Stitch.defaultAppClient!
+        
+        print("logging in anonymously")
+        client.auth.login(withCredential: AnonymousCredential()) { result in
+            switch result {
+            case .success(let user):
+                print("logged in anonymous as user \(user.id)")
+                DispatchQueue.main.async {
+                    // update UI accordingly
+                }
+            case .failure(let error):
+                print("Failed to log in: \(error)")
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
