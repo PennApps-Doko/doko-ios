@@ -2,8 +2,13 @@
 //  ReqeustHelper.swift
 //  doko
 //
-//  Created by 李文赫 on 2018/9/8.
-//  Copyright © 2018年 Emily. All rights reserved.
+//  Created by Eric on 2018/9/8.
+//  Copyright © 2018 Emily. All rights reserved.
 //
 
 import Foundation
+import Alamofire
+
+func getPostsByLocation() {
+    
+}

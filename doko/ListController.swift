@@ -8,42 +8,30 @@
 
 import Foundation
 import UIKit
-import StitchCore
+import Alamofire
 
 class ListController: UIViewController {
     
-    private lazy var stitchClient = Stitch.defaultAppClient!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
         
-        let client = Stitch.defaultAppClient!
-        
-        print("logging in anonymously")
-        client.auth.login(withCredential: AnonymousCredential()) { result in
-            switch result {
-            case .success(let user):
-                print("logged in anonymous as user \(user.id)")
-                DispatchQueue.main.async {
-                    // update UI accordingly
-                    
-                    Stitch.defaultAppClient!.callFunction(withName: "getRecentPosts", withArgs: [39.952172940000004, -75.191655]) { result in
-                        print(result)
-                        print(type(of: result))
-                        switch result {
-                        case .success(let stringResult):
-                            print("String result: \(stringResult)")
-                        case .failure(let error):
-                            print("Error retrieving String: \(String(describing: error))")
-                        }
-                    }
-                    
-                }
-            case .failure(let error):
-                print("Failed to log in: \(error)")
+        Alamofire.request("https://webhooks.mongodb-stitch.com/api/client/v2.0/app/doko-oazxq/service/getRecents/incoming_webhook/post?id=1ff3d599-02fc-ac3c-28ea-10fcdd93ea83").responseJSON { response in
+            print("Request: \(String(describing: response.request))")   // original url request
+            print("Response: \(String(describing: response.response))") // http url response
+            print("Result: \(response.result)")                         // response serialization result
+            
+            if let json = response.result.value {
+                print("JSON: \(json)") // serialized json response
+            }
+            
+            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                print("Data: \(utf8Text)") // original server data as UTF8 string
             }
         }
+
     }
     
     override func didReceiveMemoryWarning() {
