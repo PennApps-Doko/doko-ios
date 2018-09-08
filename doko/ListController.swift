@@ -28,7 +28,9 @@ class ListController: UIViewController {
                 DispatchQueue.main.async {
                     // update UI accordingly
                     
-                    Stitch.defaultAppClient!.callFunction(withName: "getRecentPosts", withArgs: [1.0, 1.0]) { result in
+                    Stitch.defaultAppClient!.callFunction(withName: "getRecentPosts", withArgs: [39.952172940000004, -75.191655]) { result in
+                        print(result)
+                        print(type(of: result))
                         switch result {
                         case .success(let stringResult):
                             print("String result: \(stringResult)")
