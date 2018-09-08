@@ -25,4 +25,10 @@ class PhotosController: UIViewController {
 }
 
 class PhotoCell: UITableViewCell {
+    @IBOutlet var profile_img: UIImageView!
+    @IBOutlet var username: UILabel!
+    @IBOutlet var geolocation: UILabel!
+    @IBOutlet var liked_img: UIImageView!
+    @IBOutlet var likes: UILabel!
+    @IBOutlet var time_liked: UILabel!
 }
