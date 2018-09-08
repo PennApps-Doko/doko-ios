@@ -8,11 +8,10 @@
 
 import Foundation
 import UIKit
-import StitchCore
+import Alamofire
 
 class ListController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    private lazy var stitchClient = Stitch.defaultAppClient!
     
     var data = ["one", "two", "three"]
     
@@ -61,6 +60,11 @@ class ListController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print("Failed to log in: \(error)")
             }
         }
+            
+        getSpotById(id: "1ff3d599-02fc-ac3c-28ea-10fcdd93ea83") { spot in
+            print(spot)
+        }
+
     }
 
     // number of rows in table view

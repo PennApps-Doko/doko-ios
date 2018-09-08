@@ -10,6 +10,7 @@
 		155A9C469F3908BC08EFBAB7 /* Pods_doko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF311701FEEBB0F5F7847B9 /* Pods_doko.framework */; };
 		2CC4665DFDBF88290BF9ED4D /* Pods_dokoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9876ACFAA153D0EA19395BFB /* Pods_dokoTests.framework */; };
 		8C5A53AB648A5CCBF0F5D53C /* Pods_dokoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94483EFE52C63D383BDCF07 /* Pods_dokoUITests.framework */; };
+		8F92631C21445E1000678FA9 /* ReqeustHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F92631B21445E1000678FA9 /* ReqeustHelper.swift */; };
 		A132CA902143B8EA008CCC95 /* sample_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132CA8F2143B8EA008CCC95 /* sample_data.swift */; };
 		A132CA922143BC40008CCC95 /* PhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132CA912143BC40008CCC95 /* PhotosController.swift */; };
 		A132CA942143BC4A008CCC95 /* MapsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132CA932143BC4A008CCC95 /* MapsController.swift */; };
@@ -47,6 +48,7 @@
 		4672E31F46395471EF32FB35 /* Pods-dokoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dokoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dokoTests/Pods-dokoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6FF311701FEEBB0F5F7847B9 /* Pods_doko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_doko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		790A0ECA859623DE21EBD958 /* Pods-dokoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dokoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-dokoTests/Pods-dokoTests.release.xcconfig"; sourceTree = "<group>"; };
+		8F92631B21445E1000678FA9 /* ReqeustHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqeustHelper.swift; sourceTree = "<group>"; };
 		9876ACFAA153D0EA19395BFB /* Pods_dokoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dokoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A132CA8F2143B8EA008CCC95 /* sample_data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sample_data.swift; sourceTree = "<group>"; };
 		A132CA912143BC40008CCC95 /* PhotosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosController.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				A146CFF021438BF700981BF9 /* Assets.xcassets */,
 				A146CFF221438BF700981BF9 /* LaunchScreen.storyboard */,
 				A146CFF521438BF700981BF9 /* Info.plist */,
+				8F92631B21445E1000678FA9 /* ReqeustHelper.swift */,
 			);
 			path = doko;
 			sourceTree = "<group>";
@@ -325,15 +328,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-dokoUITests-checkManifestLockResult.txt",
 			);
@@ -347,15 +346,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-doko-checkManifestLockResult.txt",
 			);
@@ -369,15 +364,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-dokoTests-checkManifestLockResult.txt",
 			);
@@ -391,10 +382,9 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-doko/Pods-doko-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/StitchCore/StitchCore.framework",
 				"${BUILT_PRODUCTS_DIR}/StitchCoreRemoteMongoDBService/StitchCoreRemoteMongoDBService.framework",
 				"${PODS_ROOT}/StitchCoreSDK/Frameworks/ios/libbson.framework",
@@ -405,9 +395,8 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StitchCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StitchCoreRemoteMongoDBService.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libbson.framework",
@@ -432,6 +421,7 @@
 				A146D018214391E100981BF9 /* PageViewController.swift in Sources */,
 				A132CA982143BCCD008CCC95 /* StoreController.swift in Sources */,
 				A132CA922143BC40008CCC95 /* PhotosController.swift in Sources */,
+				8F92631C21445E1000678FA9 /* ReqeustHelper.swift in Sources */,
 				A132CA942143BC4A008CCC95 /* MapsController.swift in Sources */,
 				A146CFEC21438BF700981BF9 /* ViewController.swift in Sources */,
 				A146CFEA21438BF700981BF9 /* AppDelegate.swift in Sources */,
