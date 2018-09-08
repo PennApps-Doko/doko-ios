@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A132CA902143B8EA008CCC95 /* sample_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132CA8F2143B8EA008CCC95 /* sample_data.swift */; };
+		A132CA922143BC40008CCC95 /* PhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132CA912143BC40008CCC95 /* PhotosController.swift */; };
+		A132CA942143BC4A008CCC95 /* MapsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132CA932143BC4A008CCC95 /* MapsController.swift */; };
+		A132CA962143BC59008CCC95 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132CA952143BC59008CCC95 /* ListController.swift */; };
+		A132CA982143BCCD008CCC95 /* StoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132CA972143BCCD008CCC95 /* StoreController.swift */; };
 		A146CFEA21438BF700981BF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A146CFE921438BF700981BF9 /* AppDelegate.swift */; };
 		A146CFEC21438BF700981BF9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A146CFEB21438BF700981BF9 /* ViewController.swift */; };
 		A146CFEF21438BF700981BF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A146CFED21438BF700981BF9 /* Main.storyboard */; };
@@ -35,6 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A132CA8F2143B8EA008CCC95 /* sample_data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sample_data.swift; sourceTree = "<group>"; };
+		A132CA912143BC40008CCC95 /* PhotosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosController.swift; sourceTree = "<group>"; };
+		A132CA932143BC4A008CCC95 /* MapsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsController.swift; sourceTree = "<group>"; };
+		A132CA952143BC59008CCC95 /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
+		A132CA972143BCCD008CCC95 /* StoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreController.swift; sourceTree = "<group>"; };
 		A146CFE621438BF700981BF9 /* doko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = doko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A146CFE921438BF700981BF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A146CFEB21438BF700981BF9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,7 +111,12 @@
 			children = (
 				A146CFE921438BF700981BF9 /* AppDelegate.swift */,
 				A146CFEB21438BF700981BF9 /* ViewController.swift */,
+				A132CA8F2143B8EA008CCC95 /* sample_data.swift */,
 				A146CFED21438BF700981BF9 /* Main.storyboard */,
+				A132CA972143BCCD008CCC95 /* StoreController.swift */,
+				A132CA912143BC40008CCC95 /* PhotosController.swift */,
+				A132CA932143BC4A008CCC95 /* MapsController.swift */,
+				A132CA952143BC59008CCC95 /* ListController.swift */,
 				A146D017214391E100981BF9 /* PageViewController.swift */,
 				A146CFF021438BF700981BF9 /* Assets.xcassets */,
 				A146CFF221438BF700981BF9 /* LaunchScreen.storyboard */,
@@ -266,8 +281,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A146D018214391E100981BF9 /* PageViewController.swift in Sources */,
+				A132CA982143BCCD008CCC95 /* StoreController.swift in Sources */,
+				A132CA922143BC40008CCC95 /* PhotosController.swift in Sources */,
+				A132CA942143BC4A008CCC95 /* MapsController.swift in Sources */,
 				A146CFEC21438BF700981BF9 /* ViewController.swift in Sources */,
 				A146CFEA21438BF700981BF9 /* AppDelegate.swift in Sources */,
+				A132CA902143B8EA008CCC95 /* sample_data.swift in Sources */,
+				A132CA962143BC59008CCC95 /* ListController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,10 +441,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HSYD3ZBRT6;
 				INFOPLIST_FILE = doko/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.eyu.doko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -434,10 +455,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HSYD3ZBRT6;
 				INFOPLIST_FILE = doko/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.eyu.doko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -518,6 +540,7 @@
 				A146D01021438BF700981BF9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A146D01121438BF700981BF9 /* Build configuration list for PBXNativeTarget "dokoTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +549,7 @@
 				A146D01321438BF700981BF9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A146D01421438BF700981BF9 /* Build configuration list for PBXNativeTarget "dokoUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +558,7 @@
 				A146D01621438BF700981BF9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
