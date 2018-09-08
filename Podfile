@@ -6,6 +6,7 @@ target 'doko' do
   use_frameworks!
 
   # Pods for doko
+	pod 'StitchSDK', '~> 4.0.5'
 
   target 'dokoTests' do
     inherit! :search_paths

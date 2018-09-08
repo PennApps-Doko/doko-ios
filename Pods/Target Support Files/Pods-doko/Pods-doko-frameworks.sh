@@ -141,6 +141,25 @@ strip_invalid_archs() {
   STRIP_BINARY_RETVAL=1
 }
 
+
+if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/StitchCore/StitchCore.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/StitchCoreRemoteMongoDBService/StitchCoreRemoteMongoDBService.framework"
+  install_framework "${PODS_ROOT}/StitchCoreSDK/Frameworks/ios/libbson.framework"
+  install_framework "${PODS_ROOT}/StitchCoreSDK/Frameworks/ios/libmongoc.framework"
+  install_framework "${PODS_ROOT}/StitchCoreSDK/Frameworks/ios/MongoSwift.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/StitchCoreSDK/StitchCoreSDK.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/StitchRemoteMongoDBService/StitchRemoteMongoDBService.framework"
+fi
+if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/StitchCore/StitchCore.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/StitchCoreRemoteMongoDBService/StitchCoreRemoteMongoDBService.framework"
+  install_framework "${PODS_ROOT}/StitchCoreSDK/Frameworks/ios/libbson.framework"
+  install_framework "${PODS_ROOT}/StitchCoreSDK/Frameworks/ios/libmongoc.framework"
+  install_framework "${PODS_ROOT}/StitchCoreSDK/Frameworks/ios/MongoSwift.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/StitchCoreSDK/StitchCoreSDK.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/StitchRemoteMongoDBService/StitchRemoteMongoDBService.framework"
+fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
 fi
