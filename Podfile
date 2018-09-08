@@ -7,6 +7,7 @@ target 'doko' do
 
   # Pods for doko
 	pod 'StitchSDK', '~> 4.0.5'
+pod 'SwiftyJSON', :git =>'https://github.com/SwiftyJSON/SwiftyJSON.git'
 
   target 'dokoTests' do
     inherit! :search_paths

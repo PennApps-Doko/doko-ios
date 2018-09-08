@@ -13,9 +13,11 @@ PODS:
     - StitchRemoteMongoDBService (~> 4.0.5)
   - StitchSDK/StitchSDK (4.0.5):
     - StitchSDK/StitchRemoteMongoDBService
+  - SwiftyJSON (4.1.0)
 
 DEPENDENCIES:
   - StitchSDK (~> 4.0.5)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -25,13 +27,23 @@ SPEC REPOS:
     - StitchRemoteMongoDBService
     - StitchSDK
 
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: b93c5d2bd883959262b4c7aabe333667dadb1ab0
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
 SPEC CHECKSUMS:
   StitchCore: 93969ed38c0777c9d12f3497a0fc37776e618ad5
   StitchCoreRemoteMongoDBService: ea279f1595bd4bd08fd7b0154a2265cf160adbc3
   StitchCoreSDK: c11f3f141b17f7da04bc204769355899c5de80ce
   StitchRemoteMongoDBService: e647002187b90bafcf83b7d2d5600016f6712417
   StitchSDK: 066c767799237d3ddf49ba702f8fdc4199e7e68e
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: ad70758ba604aad22b4b3ddbf6ea6e163d8362ec
+PODFILE CHECKSUM: e38f34d113979c2d01ed1fa8df50ae60641ea5f6
 
 COCOAPODS: 1.5.3

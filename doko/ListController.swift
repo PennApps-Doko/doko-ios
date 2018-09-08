@@ -27,6 +27,16 @@ class ListController: UIViewController {
                 print("logged in anonymous as user \(user.id)")
                 DispatchQueue.main.async {
                     // update UI accordingly
+                    
+                    Stitch.defaultAppClient!.callFunction(withName: "getRecentPosts", withArgs: [1.0, 1.0]) { result in
+                        switch result {
+                        case .success(let stringResult):
+                            print("String result: \(stringResult)")
+                        case .failure(let error):
+                            print("Error retrieving String: \(String(describing: error))")
+                        }
+                    }
+                    
                 }
             case .failure(let error):
                 print("Failed to log in: \(error)")
