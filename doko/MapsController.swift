@@ -17,8 +17,9 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
     @IBOutlet var tableView: UITableView!
     
     var data = ["one", "two", "three"]
+    var resturant_names: [String] = []
     
-    var initialLocation = CLLocation(latitude: 51.5001524, longitude: -0.1262362)
+//    var initialLocation = CLLocation(latitude: 51.5001524, longitude: -0.1262362)
     let regionRadius: CLLocationDistance = 1000
 //    var locationManager: CLLocationManager!
     let locationManager = CLLocationManager()
@@ -33,6 +34,7 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
     @IBOutlet var map: MKMapView!
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
         
         map.mapType = MKMapType.standard
@@ -43,8 +45,6 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
         
         let annotation = MKPointAnnotation()
         annotation.coordinate = locValue
-        annotation.title = "Javed Multani"
-        annotation.subtitle = "current location"
         map.addAnnotation(annotation)
         
         //centerMap(locValue)
@@ -76,48 +76,55 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
             map.setCenter(coor, animated: true)
         }
         
-        
-        
-        
         map.userTrackingMode = .follow
-        centerMapOnLocation(location: initialLocation)
-
-        let coordinate₁ = CLLocation(latitude: 51.5011524, longitude: -0.1262362)
         
+        // flipped
+        let lat = 39.95
+        let lon = -75.192
         
-        // meters distance
-        let distanceInMeters = initialLocation.distance(from: coordinate₁)
-        print(distanceInMeters)
-        
-        // add annotation
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude: 51.5211524, longitude: -0.1262362)
-        
-        if (distanceInMeters < 200) {
-//            annotation.pinTintColor = UIColor.Green
-        }
-        else if (distanceInMeters < 400) {
-//            annotation.pinTintColor = UIColor.Yellow
-        }
-        else {
-//            annotation.pinTintColor = UIColor.Red
-        }
-        
-        map.addAnnotation(annotation)
-        
-        // Do any additional setup after loading the view, typically from a nib.
+        getPostsByLocation(lat: 39.95, lon: -75.192, { result in
+            var res: [Post] = result
+            for post in res {
+                let dist = Float(post.distance)
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = CLLocationCoordinate2D(latitude: lon, longitude: lat)
+                
+                if dist < 200 {
+                    print("green")
+                    self.map.addAnnotation(annotation)
+                }
+                else if (dist < 500) {
+                    print("yellow")
+                    self.map.addAnnotation(annotation)
+                }
+                else {
+                    print("red")
+                    self.map.addAnnotation(annotation)
+                }
+                getSpotById(id: post.id, { result2 in
+                    print(result2)
+                    self.updateList(resturant_name: result2.name)
+                    print("--------------")
+                })
+            }
+        })
+    }
+    
+    func updateList(resturant_name: String) {
+        resturant_names.append(resturant_name)
+        tableView.reloadData()
     }
     
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count;
+        return resturant_names.count;
     }
     
     // create a cell for each table view row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MapCell = self.tableView.dequeueReusableCell(withIdentifier: "MapCell") as! MapCell
         
-        cell.store.text = data[indexPath.row];
+        cell.store.text = resturant_names[indexPath.row];
         cell.store_image.image = #imageLiteral(resourceName: "temp")
         
         return cell;
