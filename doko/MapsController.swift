@@ -11,8 +11,12 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDelegate
+class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource
  {
+    
+    @IBOutlet var tableView: UITableView!
+    
+    var data = ["one", "two", "three"]
     
     var initialLocation = CLLocation(latitude: 51.5001524, longitude: -0.1262362)
     let regionRadius: CLLocationDistance = 1000
@@ -50,7 +54,10 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        let cellReuseIdentifier = "cell";
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier);
+        tableView.delegate = self;
+        tableView.dataSource = self;
         
         // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
@@ -102,6 +109,27 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    // number of rows in table view
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count;
+    }
+    
+    // create a cell for each table view row
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: MapCell = self.tableView.dequeueReusableCell(withIdentifier: "MapCell") as! MapCell
+        
+        cell.store.text = data[indexPath.row];
+        cell.store_image.image = #imageLiteral(resourceName: "temp")
+        
+        return cell;
+    }
+    
+    // method to run when table view cell is tapped
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.present(StoreController(), animated: true, completion: nil)
+        tableView.deselectRow(at: indexPath, animated: true);
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -111,5 +139,7 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
 }
 
 class MapCell: UITableViewCell {
+    @IBOutlet var store: UILabel!
+    @IBOutlet var store_image: UIImageView!
 }
 

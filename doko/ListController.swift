@@ -10,13 +10,24 @@ import Foundation
 import UIKit
 import StitchCore
 
-class ListController: UIViewController {
+class ListController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private lazy var stitchClient = Stitch.defaultAppClient!
+    
+    var data = ["one", "two", "three"]
+    
+    @IBOutlet var tableView_200: UITableView!
+    @IBOutlet var tableView_500: UITableView!
+    @IBOutlet var tableView_1000: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let cellReuseIdentifier = "cell";
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier);
+        tableView.delegate = self;
+        tableView.dataSource = self;
         
         let client = Stitch.defaultAppClient!
         
@@ -43,6 +54,48 @@ class ListController: UIViewController {
             }
         }
     }
+
+    // number of rows in table view
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch(tableView) {
+        case tableView_200:
+            return data.count;
+            break;
+        case tableView_500:
+            return data.count;
+            break;
+        default:
+            return data.count;
+        }
+
+    }
+    
+    // create a cell for each table view row
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: A_Cell = self.tableView.dequeueReusableCell(withIdentifier: "A_Cell") as! A_Cell
+        
+        switch(tableView) {
+        case tableView_200:
+            cell.store_name.text = "200";
+            cell.image.image = #imageLiteral(resourceName: "temp")
+            break;
+        case tableView_500:
+            cell.store_name.text = "500";
+            cell.image.image = #imageLiteral(resourceName: "temp")
+            break;
+        default:
+            cell.store_name.text = "100+";
+            cell.image.image = #imageLiteral(resourceName: "temp")
+        }
+
+        return cell;
+    }
+    
+    // method to run when table view cell is tapped
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.present(StoreController(), animated: true, completion: nil)
+        tableView.deselectRow(at: indexPath, animated: true);
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -53,11 +106,7 @@ class ListController: UIViewController {
 }
 
 class A_Cell: UITableViewCell {
-}
-
-class B_Cell: UITableViewCell {
-}
-
-class C_Cell: UITableViewCell {
+    @IBOutlet var image: UIImageView!
+    @IBOutlet var store_name: UILabel!
 }
 
