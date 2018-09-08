@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		155A9C469F3908BC08EFBAB7 /* Pods_doko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF311701FEEBB0F5F7847B9 /* Pods_doko.framework */; };
+		2CC4665DFDBF88290BF9ED4D /* Pods_dokoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9876ACFAA153D0EA19395BFB /* Pods_dokoTests.framework */; };
+		8C5A53AB648A5CCBF0F5D53C /* Pods_dokoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94483EFE52C63D383BDCF07 /* Pods_dokoUITests.framework */; };
 		A132CA902143B8EA008CCC95 /* sample_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132CA8F2143B8EA008CCC95 /* sample_data.swift */; };
 		A132CA922143BC40008CCC95 /* PhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132CA912143BC40008CCC95 /* PhotosController.swift */; };
 		A132CA942143BC4A008CCC95 /* MapsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132CA932143BC4A008CCC95 /* MapsController.swift */; };
@@ -40,6 +43,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B5F03AC3C08E9F85DC15223 /* Pods-dokoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dokoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dokoUITests/Pods-dokoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4672E31F46395471EF32FB35 /* Pods-dokoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dokoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dokoTests/Pods-dokoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6FF311701FEEBB0F5F7847B9 /* Pods_doko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_doko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		790A0ECA859623DE21EBD958 /* Pods-dokoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dokoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-dokoTests/Pods-dokoTests.release.xcconfig"; sourceTree = "<group>"; };
+		9876ACFAA153D0EA19395BFB /* Pods_dokoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dokoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A132CA8F2143B8EA008CCC95 /* sample_data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sample_data.swift; sourceTree = "<group>"; };
 		A132CA912143BC40008CCC95 /* PhotosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosController.swift; sourceTree = "<group>"; };
 		A132CA932143BC4A008CCC95 /* MapsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsController.swift; sourceTree = "<group>"; };
@@ -59,6 +67,10 @@
 		A146D00921438BF700981BF9 /* dokoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dokoUITests.swift; sourceTree = "<group>"; };
 		A146D00B21438BF700981BF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A146D017214391E100981BF9 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		A741EC3D6D31C15EA03F8246 /* Pods-doko.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-doko.debug.xcconfig"; path = "Pods/Target Support Files/Pods-doko/Pods-doko.debug.xcconfig"; sourceTree = "<group>"; };
+		AF4082B3CEA523499C58EC82 /* Pods-dokoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dokoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-dokoUITests/Pods-dokoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D2DDCD282D475BD75C1A967C /* Pods-doko.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-doko.release.xcconfig"; path = "Pods/Target Support Files/Pods-doko/Pods-doko.release.xcconfig"; sourceTree = "<group>"; };
+		E94483EFE52C63D383BDCF07 /* Pods_dokoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dokoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				155A9C469F3908BC08EFBAB7 /* Pods_doko.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CC4665DFDBF88290BF9ED4D /* Pods_dokoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,12 +94,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C5A53AB648A5CCBF0F5D53C /* Pods_dokoUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06BB81CD7D53C4AFEA0778E1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6FF311701FEEBB0F5F7847B9 /* Pods_doko.framework */,
+				9876ACFAA153D0EA19395BFB /* Pods_dokoTests.framework */,
+				E94483EFE52C63D383BDCF07 /* Pods_dokoUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4544EEF3BC5935AB2E915A56 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A741EC3D6D31C15EA03F8246 /* Pods-doko.debug.xcconfig */,
+				D2DDCD282D475BD75C1A967C /* Pods-doko.release.xcconfig */,
+				4672E31F46395471EF32FB35 /* Pods-dokoTests.debug.xcconfig */,
+				790A0ECA859623DE21EBD958 /* Pods-dokoTests.release.xcconfig */,
+				2B5F03AC3C08E9F85DC15223 /* Pods-dokoUITests.debug.xcconfig */,
+				AF4082B3CEA523499C58EC82 /* Pods-dokoUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A146CFDD21438BF700981BF9 = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +131,8 @@
 				A146CFFD21438BF700981BF9 /* dokoTests */,
 				A146D00821438BF700981BF9 /* dokoUITests */,
 				A146CFE721438BF700981BF9 /* Products */,
+				4544EEF3BC5935AB2E915A56 /* Pods */,
+				06BB81CD7D53C4AFEA0778E1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,6 +190,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A146D00E21438BF700981BF9 /* Build configuration list for PBXNativeTarget "doko" */;
 			buildPhases = (
+				72A048108A99D0153521E861 /* [CP] Check Pods Manifest.lock */,
 				A146CFE221438BF700981BF9 /* Sources */,
 				A146CFE321438BF700981BF9 /* Frameworks */,
 				A146CFE421438BF700981BF9 /* Resources */,
@@ -167,6 +208,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A146D01121438BF700981BF9 /* Build configuration list for PBXNativeTarget "dokoTests" */;
 			buildPhases = (
+				916B6DE9B3608F9CDB53106A /* [CP] Check Pods Manifest.lock */,
 				A146CFF621438BF700981BF9 /* Sources */,
 				A146CFF721438BF700981BF9 /* Frameworks */,
 				A146CFF821438BF700981BF9 /* Resources */,
@@ -185,6 +227,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A146D01421438BF700981BF9 /* Build configuration list for PBXNativeTarget "dokoUITests" */;
 			buildPhases = (
+				5A201D5D2CF71B4C88E7ED46 /* [CP] Check Pods Manifest.lock */,
 				A146D00121438BF700981BF9 /* Sources */,
 				A146D00221438BF700981BF9 /* Frameworks */,
 				A146D00321438BF700981BF9 /* Resources */,
@@ -274,6 +317,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5A201D5D2CF71B4C88E7ED46 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-dokoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		72A048108A99D0153521E861 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-doko-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		916B6DE9B3608F9CDB53106A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-dokoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A146CFE221438BF700981BF9 /* Sources */ = {
@@ -437,6 +549,7 @@
 		};
 		A146D00F21438BF700981BF9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A741EC3D6D31C15EA03F8246 /* Pods-doko.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HSYD3ZBRT6;
@@ -451,6 +564,7 @@
 		};
 		A146D01021438BF700981BF9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2DDCD282D475BD75C1A967C /* Pods-doko.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HSYD3ZBRT6;
@@ -465,6 +579,7 @@
 		};
 		A146D01221438BF700981BF9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4672E31F46395471EF32FB35 /* Pods-dokoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -480,6 +595,7 @@
 		};
 		A146D01321438BF700981BF9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 790A0ECA859623DE21EBD958 /* Pods-dokoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -495,6 +611,7 @@
 		};
 		A146D01521438BF700981BF9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B5F03AC3C08E9F85DC15223 /* Pods-dokoUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = HSYD3ZBRT6;
@@ -509,6 +626,7 @@
 		};
 		A146D01621438BF700981BF9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF4082B3CEA523499C58EC82 /* Pods-dokoUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = HSYD3ZBRT6;
