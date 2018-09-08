@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Alamofire
+import StitchCore
 
 class ListController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
