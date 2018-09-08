@@ -31,7 +31,6 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
     }
     
     @IBOutlet var map: MKMapView!
-    @IBOutlet var tableView: UITableView!
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate

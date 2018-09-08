@@ -25,9 +25,17 @@ class ListController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view, typically from a nib.
         
         let cellReuseIdentifier = "cell";
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier);
-        tableView.delegate = self;
-        tableView.dataSource = self;
+        self.tableView_200.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier);
+        tableView_200.delegate = self;
+        tableView_200.dataSource = self;
+        
+        self.tableView_500.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier);
+        tableView_500.delegate = self;
+        tableView_500.dataSource = self;
+        
+        self.tableView_1000.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier);
+        tableView_1000.delegate = self;
+        tableView_1000.dataSource = self;
         
         let client = Stitch.defaultAppClient!
         
@@ -72,21 +80,21 @@ class ListController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // create a cell for each table view row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: A_Cell = self.tableView.dequeueReusableCell(withIdentifier: "A_Cell") as! A_Cell
+        let cell: A_Cell = tableView.dequeueReusableCell(withIdentifier: "A_Cell") as! A_Cell
         
-        switch(tableView) {
-        case tableView_200:
-            cell.store_name.text = "200";
-            cell.image.image = #imageLiteral(resourceName: "temp")
-            break;
-        case tableView_500:
-            cell.store_name.text = "500";
-            cell.image.image = #imageLiteral(resourceName: "temp")
-            break;
-        default:
+//        switch(tableView) {
+//        case tableView_200:
+//            cell.store_name.text = "200";
+//            cell.store_img.image = #imageLiteral(resourceName: "temp")
+//            break;
+//        case tableView_500:
+//            cell.store_name.text = "500";
+//            cell.store_img.image = #imageLiteral(resourceName: "temp")
+//            break;
+//        default:
             cell.store_name.text = "100+";
-            cell.image.image = #imageLiteral(resourceName: "temp")
-        }
+            cell.store_img.image = #imageLiteral(resourceName: "temp")
+//        }
 
         return cell;
     }
@@ -106,7 +114,7 @@ class ListController: UIViewController, UITableViewDelegate, UITableViewDataSour
 }
 
 class A_Cell: UITableViewCell {
-    @IBOutlet var image: UIImageView!
+    @IBOutlet var store_img: UIImageView!
     @IBOutlet var store_name: UILabel!
 }
 

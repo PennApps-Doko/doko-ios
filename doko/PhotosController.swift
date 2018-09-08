@@ -45,7 +45,7 @@ class PhotosController: UIViewController, UITableViewDelegate, UITableViewDataSo
         cell.geolocation.text = data[indexPath.row]
         cell.liked_img.image = #imageLiteral(resourceName: "temp")
         cell.likes.text = data[indexPath.row]
-        cell.time_liked = "Liked on \(data[indexPath.row])"
+        cell.time_liked.text = "Liked on \(data[indexPath.row])"
         
         return cell;
     }
