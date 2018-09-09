@@ -45,6 +45,7 @@ class StoreController: UIViewController {
         if let url = URL(string: url) {
             background_img.contentMode = .scaleAspectFit
             downloadImage(from: url)
+            print(url)
         }
     }
     

@@ -61,13 +61,13 @@ class ListController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print("Failed to log in: \(error)")
             }
         }
-            
+        
         getSpotById(id: "1ff3d599-02fc-ac3c-28ea-10fcdd93ea83") { spot in
             print(spot)
         }
-
+        
     }
-
+    
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch(tableView) {
@@ -80,27 +80,27 @@ class ListController: UIViewController, UITableViewDelegate, UITableViewDataSour
         default:
             return data.count;
         }
-
+        
     }
     
     // create a cell for each table view row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: A_Cell = tableView.dequeueReusableCell(withIdentifier: "A_Cell") as! A_Cell
         
-//        switch(tableView) {
-//        case tableView_200:
-//            cell.store_name.text = "200";
-//            cell.store_img.image = #imageLiteral(resourceName: "temp")
-//            break;
-//        case tableView_500:
-//            cell.store_name.text = "500";
-//            cell.store_img.image = #imageLiteral(resourceName: "temp")
-//            break;
-//        default:
-            cell.store_name.text = "100+";
-            cell.store_img.image = #imageLiteral(resourceName: "temp")
-//        }
-
+        //        switch(tableView) {
+        //        case tableView_200:
+        //            cell.store_name.text = "200";
+        //            cell.store_img.image = #imageLiteral(resourceName: "temp")
+        //            break;
+        //        case tableView_500:
+        //            cell.store_name.text = "500";
+        //            cell.store_img.image = #imageLiteral(resourceName: "temp")
+        //            break;
+        //        default:
+        cell.store_name.text = "100+";
+        cell.store_img.image = #imageLiteral(resourceName: "temp")
+        //        }
+        
         return cell;
     }
     
@@ -122,4 +122,3 @@ class A_Cell: UITableViewCell {
     @IBOutlet var store_img: UIImageView!
     @IBOutlet var store_name: UILabel!
 }
-

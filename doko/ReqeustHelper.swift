@@ -11,10 +11,10 @@ import Alamofire
 import SwiftyJSON
 
 public struct Post {
-    public var id: String!
-    public var location: [Double]!
-    public var distance: Double!
-    public var spotId: String!
+    public var id: String
+    public var location: [Double]
+    public var distance: Double
+    public var spotId: String
 }
 
 public struct PostContent {
@@ -41,7 +41,7 @@ public struct Spot {
 }
 
 public func getPostsByLocation(lat:Float, lon:Float, _ callback: @escaping (_ post: [Post]) -> ()) {
-    let params = ["lat":lat, "lon":lon]
+    let params = ["lat":lat, "lon":lon, "range": 1000]
     Alamofire.request("https://webhooks.mongodb-stitch.com/api/client/v2.0/app/doko-oazxq/service/getRecents/incoming_webhook/recents?", parameters:params).responseJSON { response in
         
         var posts: [Post] = []

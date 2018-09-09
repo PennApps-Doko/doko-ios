@@ -11,7 +11,9 @@ import UIKit
 
 class PhotosController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var data = ["one", "two", "three"]
+    var data: [Spot] = []
+
+    //??
 
     @IBOutlet var tableView: UITableView!
     
@@ -19,12 +21,29 @@ class PhotosController: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        getPostsByLocation(lat: -75.19211, lon: 39.953321) { posts in
+            self.data = []
+            print(posts)
+            print(posts[0].spotId)
+            posts.forEach({ post in
+                getSpotById(id: post.spotId) { spot in
+                    self.data.append(spot)
+                    self.tableView.reloadData()
+                }
+            })
+            
+        }
+        
         let cellReuseIdentifier = "cell";
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier);
         tableView.delegate = self;
         tableView.dataSource = self;
         
+    
+        
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -33,19 +52,19 @@ class PhotosController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count;
+        return self.data.count;
     }
     
     // create a cell for each table view row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: PhotoCell = self.tableView.dequeueReusableCell(withIdentifier: "PhotoCell") as! PhotoCell
         
-        cell.username.text = data[indexPath.row];
+        cell.username.text = self.data[indexPath.row].name;
         cell.profile_img.image = #imageLiteral(resourceName: "temp")
-        cell.geolocation.text = data[indexPath.row]
+        cell.geolocation.text = self.data[indexPath.row].id
         cell.liked_img.image = #imageLiteral(resourceName: "temp")
-        cell.likes.text = data[indexPath.row]
-        cell.time_liked.text = "Liked on \(data[indexPath.row])"
+        cell.likes.text = "Yunno"
+        cell.time_liked.text = "Liked two days ago"
         
         return cell;
     }
@@ -57,6 +76,7 @@ class PhotosController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
 }
+
 
 class PhotoCell: UITableViewCell {
     @IBOutlet var profile_img: UIImageView!
