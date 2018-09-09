@@ -121,27 +121,31 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
 //                let dist = Float(post.distance)
                 print(post.location[0])
                 print(post.location[1])
-                let annotation = MKPointAnnotation()
+                
+                var annotation = MKPointAnnotation()
+                
                 annotation.coordinate = CLLocationCoordinate2D(latitude: lon, longitude: lat)
+                map.addAnnotation(annotation)
+                
                 var dist = CLLocation(latitude: 39.9522, longitude: 75.1932).distance(from: CLLocation(latitude: post.location[0], longitude: post.location[1]))
                 print(dist)
                 
-                var text_color: UIColor!
-                if dist < 200 {
-                    print("green")
-                    text_color = UIColor.green
-                    self.map.addAnnotation(annotation)
-                }
-                else if (dist < 500) {
-                    print("yellow")
-                    text_color = UIColor.orange
-                    self.map.addAnnotation(annotation)
-                }
-                else {
-                    print("red")
-                    text_color = UIColor.red
-                    self.map.addAnnotation(annotation)
-                }
+//                var text_color: UIColor!
+//                if dist < 200 {
+//                    print("green")
+//                    text_color = UIColor.green
+//                    map.addAnnotation(annotation)
+//                }
+//                else if (dist < 500) {
+//                    print("yellow")
+//                    text_color = UIColor.orange
+//                    map.addAnnotation(annotation)
+//                }
+//                else {
+//                    print("red")
+//                    text_color = UIColor.red
+//                    map.addAnnotation(annotation)
+//                }
                 getSpotById(id: post.id, { result2 in
                     print(result2)
                     self.updateList(resturant_name: result2.name, color: self.getTextColor(dist: Int(dist)), desc: result2.restaurant.description, tags: result2.restaurant.tags, lat: Float(result2.location[0]), lon: Float(result2.location[1]), url: result2.postContent.images[0], url_2: result2.postContent.url)
@@ -210,6 +214,7 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
                       lons[indexPath.row],
                       img_url[indexPath.row],
                       company_url[indexPath.row]]
+        
         performSegue(withIdentifier: "map_store", sender: cell)
     }
     
