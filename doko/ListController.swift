@@ -106,8 +106,8 @@ class ListController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.present(StoreController(), animated: true, completion: nil)
-        tableView.deselectRow(at: indexPath, animated: true);
+        let cell = tableView.cellForRow(at: indexPath)
+        performSegue(withIdentifier: "list_store", sender: cell)
     }
     
     override func didReceiveMemoryWarning() {

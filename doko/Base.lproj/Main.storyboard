@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rE4-Q5-YJS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rE4-Q5-YJS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -297,6 +297,7 @@
                     <connections>
                         <outlet property="map" destination="IK9-et-4hS" id="mOO-aI-GKg"/>
                         <outlet property="tableView" destination="79Z-xZ-gsQ" id="FPf-M4-LVK"/>
+                        <segue destination="f9g-zi-4Od" kind="show" identifier="map_store" id="CTy-Gl-xz7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cm6-XW-G35" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -316,7 +317,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="temp" translatesAutoresizingMaskIntoConstraints="NO" id="kfw-so-gCy">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="174"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <navigationBar alpha="0.90000000000000002" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WD4-Ao-NKi">
@@ -491,6 +492,7 @@
                         <outlet property="tableView_1000" destination="gwN-DO-UCR" id="1ag-xR-e1h"/>
                         <outlet property="tableView_200" destination="W4W-Pa-ru0" id="ssU-mv-Fs7"/>
                         <outlet property="tableView_500" destination="qsy-OK-1g7" id="Oso-6E-qHM"/>
+                        <segue destination="f9g-zi-4Od" kind="show" identifier="list_store" id="mpE-5L-Ffs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q5f-xL-jIl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -580,6 +582,7 @@
                     <tabBarItem key="tabBarItem" title="Photos" id="7Ph-Xx-FS6"/>
                     <connections>
                         <outlet property="tableView" destination="i80-4i-mZg" id="wGp-FO-kpr"/>
+                        <segue destination="f9g-zi-4Od" kind="showDetail" identifier="photo_store" id="zeu-O6-DJL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CJE-rW-eag" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -615,5 +618,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="kmV-XO-ODH"/>
+        <segue reference="zeu-O6-DJL"/>
     </inferredMetricsTieBreakers>
 </document>
