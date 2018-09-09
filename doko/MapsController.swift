@@ -19,6 +19,8 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
     var data = ["one", "two", "three"]
     var resturant_names: [String] = []
     var resturant_color: [UIColor] = []
+    var resturant_desc: [String] = []
+    var resturant_tags: [[String]] = []
     
 //    var initialLocation = CLLocation(latitude: 51.5001524, longitude: -0.1262362)
     let regionRadius: CLLocationDistance = 4000
@@ -84,7 +86,7 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
         let lon = -75.192
         
         let annotation2 = MKPointAnnotation()
-        annotation2.title = ""
+        annotation2.title = "McDonalds"
         annotation2.coordinate = CLLocationCoordinate2D(latitude: 40.727, longitude: -73.996)
         map.addAnnotation(annotation2)
         
@@ -114,16 +116,18 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
                 }
                 getSpotById(id: post.id, { result2 in
                     print(result2)
-                    self.updateList(resturant_name: result2.name, color: text_color)
+                    self.updateList(resturant_name: result2.name, color: text_color, desc: result2.restaurant.description, tags: result2.restaurant.tags)
                     print("--------------")
                 })
             }
         })
     }
     
-    func updateList(resturant_name: String, color: UIColor) {
+    func updateList(resturant_name: String, color: UIColor, desc: String, tags: [String]) {
         resturant_names.append(resturant_name)
         resturant_color.append(color)
+        resturant_desc.append(desc)
+        resturant_tags.append(tags)
         tableView.reloadData()
     }
     
@@ -133,6 +137,7 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
     }
     
     // create a cell for each table view row
+    var dataToPass = [Any]()
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MapCell = self.tableView.dequeueReusableCell(withIdentifier: "MapCell") as! MapCell
         
@@ -146,7 +151,18 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
+        dataToPass = [resturant_names[indexPath.row], resturant_desc[indexPath.row], resturant_tags[indexPath.row]]
         performSegue(withIdentifier: "map_store", sender: cell)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "map_store" {
+            if let destinationVC = segue.destination as? StoreController {
+                destinationVC.passed_name = dataToPass[0] as! String
+                destinationVC.passed_desc = dataToPass[1] as! String
+                destinationVC.passed_tags = dataToPass[2] as! [String]
+            }
+        }
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
