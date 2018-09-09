@@ -18,6 +18,7 @@ class StoreController: UIViewController {
     var passed_tags = [String]()
     var lat: Float!
     var lon: Float!
+    var url: String! // for the image
     
     @IBOutlet var background_img: UIImageView!
     @IBOutlet var store_name: UILabel!
@@ -34,6 +35,26 @@ class StoreController: UIViewController {
         store_name.text = passed_name
         desc.text = passed_desc
         tags.text = passed_tags.joined(separator: " ")
+        
+        if let url = URL(string: url) {
+            background_img.contentMode = .scaleAspectFit
+            downloadImage(from: url)
+        }
+    }
+    
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+    func downloadImage(from url: URL) {
+        print("Download Started")
+        getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished")
+            DispatchQueue.main.async() {
+                self.background_img.image = UIImage(data: data)
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
