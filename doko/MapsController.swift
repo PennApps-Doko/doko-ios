@@ -118,9 +118,13 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
         getPostsByLocation(lat: 39.9522, lon: 75.1932, { result in
             var res: [Post] = result
             for post in res {
-                let dist = Float(post.distance)
+//                let dist = Float(post.distance)
+                print(post.location[0])
+                print(post.location[1])
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = CLLocationCoordinate2D(latitude: lon, longitude: lat)
+                var dist = CLLocation(latitude: 39.9522, longitude: 75.1932).distance(from: CLLocation(latitude: post.location[0], longitude: post.location[1]))
+                print(dist)
                 
                 var text_color: UIColor!
                 if dist < 200 {
@@ -140,11 +144,31 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
                 }
                 getSpotById(id: post.id, { result2 in
                     print(result2)
-                    self.updateList(resturant_name: result2.name, color: text_color, desc: result2.restaurant.description, tags: result2.restaurant.tags, lat: Float(result2.location[0]), lon: Float(result2.location[1]), url: result2.postContent.images[0], url_2: result2.postContent.url)
+                    self.updateList(resturant_name: result2.name, color: self.getTextColor(dist: Int(dist)), desc: result2.restaurant.description, tags: result2.restaurant.tags, lat: Float(result2.location[0]), lon: Float(result2.location[1]), url: result2.postContent.images[0], url_2: result2.postContent.url)
                     print("--------------")
                 })
             }
         })
+    }
+    
+    func getTextColor(dist: Int) -> UIColor{
+        var text_color: UIColor!
+        if dist < 200 {
+            print("green")
+            text_color = UIColor.green
+//            self.map.addAnnotation(annotation)
+        }
+        else if (dist < 500) {
+            print("yellow")
+            text_color = UIColor.orange
+//            self.map.addAnnotation(annotation)
+        }
+        else {
+            print("red")
+            text_color = UIColor.red
+//            self.map.addAnnotation(annotation)
+        }
+        return text_color
     }
     
     func updateList(resturant_name: String, color: UIColor, desc: String, tags: [String], lat: Float, lon: Float, url: String, url_2: String) {
