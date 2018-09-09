@@ -90,12 +90,32 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
         let lon = -75.192
         
         let annotation2 = MKPointAnnotation()
-        annotation2.title = "McDonalds"
-        annotation2.coordinate = CLLocationCoordinate2D(latitude: 40.727, longitude: -73.996)
+        annotation2.title = "White Dog Cafe"
+        annotation2.coordinate = CLLocationCoordinate2D(latitude: 39.9535910, longitude: -75.19291)
         map.addAnnotation(annotation2)
         
+        let annotation3 = MKPointAnnotation()
+        annotation3.title = "Shake Shack"
+        annotation3.coordinate = CLLocationCoordinate2D(latitude: 39.953953062438224, longitude: -75.18858019863558)
+        map.addAnnotation(annotation3)
         
-        getPostsByLocation(lat: 39.95, lon: -75.192, { result in
+        let annotation4 = MKPointAnnotation()
+        annotation4.title = "Starbucks"
+        annotation4.coordinate = CLLocationCoordinate2D(latitude: 39.952976545573826, longitude: -75.1920680655571)
+        map.addAnnotation(annotation4)
+        
+        let annotation5 = MKPointAnnotation()
+        annotation5.title = "Accenture Cafe"
+        annotation5.coordinate = CLLocationCoordinate2D(latitude: 39.95217294000004, longitude: -75.191655)
+        map.addAnnotation(annotation5)
+        
+        let annotation6 = MKPointAnnotation()
+        annotation6.title = "Towne Building"
+        annotation6.coordinate = CLLocationCoordinate2D(latitude: 39.951562841944174, longitude: -75.1913309090729)
+        map.addAnnotation(annotation6)
+        
+        
+        getPostsByLocation(lat: 39.9522, lon: 75.1932, { result in
             var res: [Post] = result
             for post in res {
                 let dist = Float(post.distance)
