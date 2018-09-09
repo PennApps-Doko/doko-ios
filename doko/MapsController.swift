@@ -21,6 +21,8 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
     var resturant_color: [UIColor] = []
     var resturant_desc: [String] = []
     var resturant_tags: [[String]] = []
+    var lats: [Float] = []
+    var lons: [Float] = []
     
 //    var initialLocation = CLLocation(latitude: 51.5001524, longitude: -0.1262362)
     let regionRadius: CLLocationDistance = 4000
@@ -116,18 +118,20 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
                 }
                 getSpotById(id: post.id, { result2 in
                     print(result2)
-                    self.updateList(resturant_name: result2.name, color: text_color, desc: result2.restaurant.description, tags: result2.restaurant.tags)
+                    self.updateList(resturant_name: result2.name, color: text_color, desc: result2.restaurant.description, tags: result2.restaurant.tags, lat: Float(result2.location[0]), lon: Float(result2.location[1]))
                     print("--------------")
                 })
             }
         })
     }
     
-    func updateList(resturant_name: String, color: UIColor, desc: String, tags: [String]) {
+    func updateList(resturant_name: String, color: UIColor, desc: String, tags: [String], lat: Float, lon: Float) {
         resturant_names.append(resturant_name)
         resturant_color.append(color)
         resturant_desc.append(desc)
         resturant_tags.append(tags)
+        lats.append(lat)
+        lons.append(lon)
         tableView.reloadData()
     }
     
@@ -151,7 +155,11 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        dataToPass = [resturant_names[indexPath.row], resturant_desc[indexPath.row], resturant_tags[indexPath.row]]
+        dataToPass = [resturant_names[indexPath.row],
+                      resturant_desc[indexPath.row],
+                      resturant_tags[indexPath.row],
+                      lats[indexPath.row],
+                      lons[indexPath.row]]
         performSegue(withIdentifier: "map_store", sender: cell)
     }
     
@@ -161,6 +169,8 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
                 destinationVC.passed_name = dataToPass[0] as! String
                 destinationVC.passed_desc = dataToPass[1] as! String
                 destinationVC.passed_tags = dataToPass[2] as! [String]
+                destinationVC.lat = dataToPass[3] as! Float
+                destinationVC.lon = dataToPass[4] as! Float
             }
         }
     }
