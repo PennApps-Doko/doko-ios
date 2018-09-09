@@ -19,6 +19,7 @@ class StoreController: UIViewController {
     var lat: Float!
     var lon: Float!
     var url: String! // for the image
+    var source: String! // compnany url
     
     @IBOutlet var background_img: UIImageView!
     @IBOutlet var store_name: UILabel!
@@ -29,12 +30,17 @@ class StoreController: UIViewController {
         openMapForPlace(lat: lat, lon: lon)
     }
     
+    @IBAction func visit_source(_ sender: Any) {
+        guard let url = URL(string: source) else { return }
+        UIApplication.shared.open(url)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         store_name.text = passed_name
         desc.text = passed_desc
-        tags.text = passed_tags.joined(separator: " ")
+        tags.text = "tags: " + passed_tags.joined(separator: " ")
         
         if let url = URL(string: url) {
             background_img.contentMode = .scaleAspectFit
