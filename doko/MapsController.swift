@@ -18,16 +18,17 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
     
     var data = ["one", "two", "three"]
     var resturant_names: [String] = []
+    var resturant_color: [UIColor] = []
     
 //    var initialLocation = CLLocation(latitude: 51.5001524, longitude: -0.1262362)
-    let regionRadius: CLLocationDistance = 1000
+    let regionRadius: CLLocationDistance = 4000
 //    var locationManager: CLLocationManager!
     let locationManager = CLLocationManager()
 
     
     func centerMapOnLocation(location:CLLocation) {
         let coordianteRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-                                                                  regionRadius * 2.0, regionRadius * 2.0)
+                                                                  regionRadius * 200.0, regionRadius * 200.0)
         map.setRegion(coordianteRegion, animated: true)
     }
     
@@ -43,9 +44,9 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
         let region = MKCoordinateRegion(center: locValue, span: span)
         map.setRegion(region, animated: true)
         
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = locValue
-        map.addAnnotation(annotation)
+//        let annotation = MKPointAnnotation()
+//        annotation.coordinate = locValue
+//        map.addAnnotation(annotation)
         
         //centerMap(locValue)
     }
@@ -60,7 +61,6 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
         
         // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
-        
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -72,15 +72,22 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
         map.isZoomEnabled = true
         map.isScrollEnabled = true
         
+        // blue dot
         if let coor = map.userLocation.location?.coordinate{
             map.setCenter(coor, animated: true)
         }
-        
         map.userTrackingMode = .follow
         
+        // custom point
         // flipped
         let lat = 39.95
         let lon = -75.192
+        
+        let annotation2 = MKPointAnnotation()
+        annotation2.title = ""
+        annotation2.coordinate = CLLocationCoordinate2D(latitude: 40.727, longitude: -73.996)
+        map.addAnnotation(annotation2)
+        
         
         getPostsByLocation(lat: 39.95, lon: -75.192, { result in
             var res: [Post] = result
@@ -89,29 +96,34 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = CLLocationCoordinate2D(latitude: lon, longitude: lat)
                 
+                var text_color: UIColor!
                 if dist < 200 {
                     print("green")
+                    text_color = UIColor.green
                     self.map.addAnnotation(annotation)
                 }
                 else if (dist < 500) {
                     print("yellow")
+                    text_color = UIColor.orange
                     self.map.addAnnotation(annotation)
                 }
                 else {
                     print("red")
+                    text_color = UIColor.red
                     self.map.addAnnotation(annotation)
                 }
                 getSpotById(id: post.id, { result2 in
                     print(result2)
-                    self.updateList(resturant_name: result2.name)
+                    self.updateList(resturant_name: result2.name, color: text_color)
                     print("--------------")
                 })
             }
         })
     }
     
-    func updateList(resturant_name: String) {
+    func updateList(resturant_name: String, color: UIColor) {
         resturant_names.append(resturant_name)
+        resturant_color.append(color)
         tableView.reloadData()
     }
     
@@ -125,6 +137,7 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
         let cell: MapCell = self.tableView.dequeueReusableCell(withIdentifier: "MapCell") as! MapCell
         
         cell.store.text = resturant_names[indexPath.row];
+        cell.store.textColor = resturant_color[indexPath.row]
         cell.store_image.image = #imageLiteral(resourceName: "temp")
         
         return cell;
@@ -134,6 +147,22 @@ class MapsController: UIViewController, CLLocationManagerDelegate,MKMapViewDeleg
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         performSegue(withIdentifier: "map_store", sender: cell)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else { return nil }
+        
+        let identifier = "Annotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView!.canShowCallout = true
+        } else {
+            annotationView!.annotation = annotation
+        }
+        
+        return annotationView
     }
     
     override func didReceiveMemoryWarning() {
