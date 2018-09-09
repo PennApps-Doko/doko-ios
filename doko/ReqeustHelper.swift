@@ -47,7 +47,7 @@ public func getPostsByLocation(lat:Float, lon:Float, _ callback: @escaping (_ po
         var posts: [Post] = []
         
         JSON(response.result.value!).array!.forEach({ json in
-            let post = Post(id: json["id"].string!, location: [Double(json["location"]["lon"]["$numberDouble"].string!)!, Double(json["location"]["lat"]["$numberDouble"].string!)!], distance: Double(json["distance"]["$numberDouble"].string!)!, spotId: json["spotId"].string!)
+            let post = Post(id: json["id"].string!, location: [Double(json["location"]["lat"]["$numberDouble"].string!)!, Double(json["location"]["lon"]["$numberDouble"].string!)!], distance: Double(json["distance"]["$numberDouble"].string!)!, spotId: json["spotId"].string!)
             posts.append(post)
         })
         
@@ -61,7 +61,7 @@ public func getPostsByLocation(lat:Float, lon:Float, _ callback: @escaping (_ po
             let json: JSON = JSON(response.result.value!)
             let name :String! = json["name"].string!
             let id :String! = json["id"].string!
-            let location :[Double]! = [Double(json["location"]["lon"]["$numberDouble"].string!)!, Double(json["location"]["lat"]["$numberDouble"].string!)!]
+            let location :[Double]! = [Double(json["location"]["lat"]["$numberDouble"].string!)!, Double(json["location"]["lon"]["$numberDouble"].string!)!]
             let _postContent: JSON = json["postContent"]
             
             var images: [String] = []
@@ -85,7 +85,7 @@ public func getPostsByLocation(lat:Float, lon:Float, _ callback: @escaping (_ po
             let spot = Spot(
                 name: json["name"].string!,
                 id: json["id"].string!,
-                location: [Double(json["location"]["lon"]["$numberDouble"].string!)!, Double(json["location"]["lat"]["$numberDouble"].string!)!],
+                location: [Double(json["location"]["lat"]["$numberDouble"].string!)!, Double(json["location"]["lon"]["$numberDouble"].string!)!],
                 postContent: postContent,
                 restaurant: restaurant)
             
